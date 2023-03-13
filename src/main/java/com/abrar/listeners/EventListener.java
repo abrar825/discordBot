@@ -3,6 +3,7 @@ package com.abrar.listeners;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
+import net.dv8tion.jda.api.events.user.update.UserUpdateOnlineStatusEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class EventListener extends ListenerAdapter {
@@ -25,5 +26,11 @@ public class EventListener extends ListenerAdapter {
             System.out.println("Received!");
             event.getGuild().getDefaultChannel().sendMessage("pong!").queue();
         }
+    }
+
+    public void onUserUpdateOnlineStatus(UserUpdateOnlineStatusEvent event) {
+        User user = event.getUser();
+        String message = user.getAsMention() + " updated their status to " + event.getNewOnlineStatus();
+        event.getGuild().getDefaultChannel().sendMessage(message).queue();
     }
 }
