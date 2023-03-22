@@ -37,7 +37,10 @@ public class DiscordBot {
         builder.enableCache(CacheFlag.ONLINE_STATUS);
 
         // Gateway Intents
-        builder.enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_PRESENCES);
+        builder.enableIntents(GatewayIntent.GUILD_MEMBERS,
+                GatewayIntent.GUILD_MESSAGES,
+                GatewayIntent.GUILD_PRESENCES,
+                GatewayIntent.GUILD_MESSAGE_REACTIONS);
 
         shardmanager = builder.build();
 
